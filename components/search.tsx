@@ -1,10 +1,17 @@
+'use client'
+import { searchStock } from '@/actions'
 import React from 'react'
+import { useDebouncedCallback } from 'use-debounce';
 
-const Search = async () => {
+const Search = () => {
+    const debouncedSearch = useDebouncedCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+        searchStock(event.target.value);
+    }, 500)
+
     return (
         <div>
             <label className="input input-bordered flex items-center gap-2 w-fit">
-                <input type="text" className="grow" placeholder="Search" />
+                <input type="text" className="grow" placeholder="Search" onChange={(event) => debouncedSearch(event)} />
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 16 16"
