@@ -9,9 +9,11 @@ export const searchStock = async (term: string) => {
     try {
       const response = await axios(url);
       const data = response.data;
+      return data
       console.log(data);
     } catch (error: any) {
       console.log(error.message);
+      return error.message
     }
   }
 };

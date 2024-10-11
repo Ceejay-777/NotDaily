@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import Search from './search'
+import SearchResults from './searchResults'
 import Theme from './theme'
 import Link from 'next/link'
 
-const Header = () => {
+const Header =() => {
   return (
     <div className='flex justify-between items-center px-6'>
       <div className='text-6xl font-bold tracking-[-0.15em]'><span className='text-green-600'>N</span><span className='text-red-600'>D</span></div>
-      <Search />
+      <Suspense fallback={<div className='skeleton w-64 h-12 rounded-lg'></div>}>
+        <Search />
+      </Suspense>
+      {/* <div className='border p-2'>{searchParams?.params}</div> */}
       <nav className='flex gap-4'>
         <Link href="./">Home</Link>
         <Link href="./">News</Link>
