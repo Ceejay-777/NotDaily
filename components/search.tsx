@@ -2,7 +2,6 @@
 // import { searchStock } from '@/actions'
 import React, { Suspense } from 'react'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
-import SearchResults from './searchResults'
 import { useDebouncedCallback } from 'use-debounce';
 
 const Search = () => {

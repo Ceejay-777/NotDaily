@@ -1,16 +1,17 @@
 import React, { Suspense } from 'react'
 import Search from './search'
-import SearchResults from './searchResults'
 import Theme from './theme'
 import Link from 'next/link'
+import SearchResults from './searchResults'
 
-const Header =() => {
+const Header =({query} : {query : string}) => {
   return (
     <div className='flex justify-between items-center px-6'>
       <div className='text-6xl font-bold tracking-[-0.15em]'><span className='text-green-600'>N</span><span className='text-red-600'>D</span></div>
       <Suspense fallback={<div className='skeleton w-64 h-12 rounded-lg'></div>}>
         <Search />
       </Suspense>
+      <SearchResults query={query}/>
       {/* <div className='border p-2'>{searchParams?.params}</div> */}
       <nav className='flex gap-4'>
         <Link href="./">Home</Link>
