@@ -1,4 +1,5 @@
 import Header from '@/components/header'
+import SearchResults from '@/components/searchResults'
 import React from 'react'
 
 const Dashboard = ({ searchParams }: { searchParams?: { query?: string } }) => {
@@ -7,6 +8,7 @@ const Dashboard = ({ searchParams }: { searchParams?: { query?: string } }) => {
     return (
         <div>
             <Header query={query}/>
+            <SearchResults query={query} />
             Dashboard {searchParams?.query || "No query"}
         </div>
     )

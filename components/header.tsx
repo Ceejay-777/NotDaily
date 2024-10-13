@@ -11,7 +11,7 @@ const Header =({query} : {query : string}) => {
       <Suspense fallback={<div className='skeleton w-64 h-12 rounded-lg'></div>}>
         <Search />
       </Suspense>
-      <SearchResults query={query}/>
+      {/* <SearchResults query={query}/> */}
       {/* <div className='border p-2'>{searchParams?.params}</div> */}
       <nav className='flex gap-4'>
         <Link href="./">Home</Link>

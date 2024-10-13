@@ -23,7 +23,7 @@ const Search = () => {
         }
 
         replace(`${pathname}?${params.toString()}`)
-    }, 750)
+    }, 500)
 
     return (
         <div>
