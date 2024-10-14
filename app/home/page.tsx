@@ -1,15 +1,18 @@
 import Header from '@/components/header'
 import SearchResults from '@/components/searchResults'
-import React from 'react'
+import React, { Suspense } from 'react'
 
 const Dashboard = ({ searchParams }: { searchParams?: { query?: string } }) => {
-    const query = searchParams?.query || ''
+    const query = searchParams?.query 
     console.log(searchParams?.query)
     return (
         <div>
-            <Header query={query}/>
-            <SearchResults query={query} />
-            Dashboard {searchParams?.query || "No query"}
+            <Header />
+            <Suspense fallback={<div className='skeleton w-64 h-12 p-4'>
+                Searching...
+            </div>}>
+                <SearchResults query={query} />
+            </Suspense>
         </div>
     )
 }

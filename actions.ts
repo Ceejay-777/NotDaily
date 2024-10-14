@@ -1,23 +1,39 @@
 import axios from "axios";
-const key = process.env.NEXT_PUBLIC_ALPHA_API_KEY;
+const alpha_key = process.env.ALPHA_API_KEY;
+const finnhub_token = process.env.FINNHUB_API_TOKEN;
+const max_results = 6;
 
-export const searchStock = async (query: string) => {
-  console.log("Okay");
+export const searchStock = async (query: string | undefined) => {
   // const url = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${query}&apikey=${key}`;
 
-  const url = `https://finnhub.io/api/v1/search?q=${query}&token=cqoalv9r01qo8865rbb0cqoalv9r01qo8865rbbg`
+  
+  if (!query) {
+    return 
+  }
+
+  const url = `https://finnhub.io/api/v1/search?q=${encodeURIComponent(
+    query
+  )}&token=${finnhub_token}`;
 
   if (query) {
     try {
-      const response = await axios(url);
+      const response = await axios.get(url);
+
       const data = response.data;
       // console.log(data);
-      const choice = data.count > 6 ? data.result.slice(0,6) : data.result
-      // console.log(choice)
-      return choice
+      const choice =
+        data.count > max_results
+          ? data.result.slice(0, max_results)
+          : data.result;
+      // console.log(choice  + "Okay")
+      return { choice, status: "success" };
     } catch (error: any) {
-      console.log(error.message);
-      return error.message
+      console.log("Error searching stocks", error.message);
+      return {
+        message:
+          "Could not search at this time. Please check your internet connection",
+        status: "error",
+      };
     }
   }
 };
