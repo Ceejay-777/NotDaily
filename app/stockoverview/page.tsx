@@ -1,8 +1,11 @@
+import Breadcrumbs from '@/components/breadcrumbs'
 import React from 'react'
 
 const Page = () => {
   return (
-    <div>Page</div>
+    <div>
+      <Breadcrumbs />
+    </div>
   )
 }
 
