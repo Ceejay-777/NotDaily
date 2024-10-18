@@ -1,9 +1,9 @@
 import Header from '@/components/header'
-import SearchResults from '@/components/searchResults'
+import SearchResults from '@/components/search/searchResults'
 import React, { Suspense } from 'react'
 
 const Dashboard = ({ searchParams }: { searchParams?: { query?: string } }) => {
-    const query = searchParams?.query 
+    const query = searchParams?.query
     console.log(searchParams?.query)
     return (
         <div>

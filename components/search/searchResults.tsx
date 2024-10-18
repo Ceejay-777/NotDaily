@@ -1,5 +1,6 @@
 import { searchStock } from '@/actions'
 import React from 'react'
+import ResultBox from './resultBox';
 
 type ResultType = {
   description: string;
@@ -16,10 +17,7 @@ const SearchResults = async ({ query }: { query: string | undefined }) => {
         results.choice.map((result: ResultType) => {
           const { description, displaySymbol } = result
           return (
-            <div className='mb-2 w-fit border-b pb-2' key={displaySymbol}>
-              <div>{displaySymbol}</div>
-              <div className='text-xs'>{description}</div>
-            </div>
+            <ResultBox result={{description, displaySymbol}} />
           )
         })
       }

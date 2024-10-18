@@ -1,11 +1,11 @@
 import React, { Suspense } from 'react'
-import Search from './search'
+import Search from './search/search'
 import Theme from './theme'
 import Link from 'next/link'
-import SearchResults from './searchResults'
+import SearchResults from './search/searchResults'
 import Breadcrumbs from './breadcrumbs'
 
-const Header =() => {
+const Header = () => {
   return (
     <div>
       <div className='flex justify-between items-center px-6'>
